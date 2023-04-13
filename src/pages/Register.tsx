@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../components/shared/Input";
 import Button from "../components/shared/button";
-import { useDispatch,useSelector} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../redux/userActions";
 import { User } from "../redux/userTypes";
-
-
-
 
 const Register = () => {
   const [password, setPasswords] = useState<string>("pistol");
@@ -19,10 +16,12 @@ const Register = () => {
 
   const dispatch = useDispatch<any>();
   const error = useSelector((state: any) => state);
-  console.log('error',error);
+  console.log("error", error);
 
+  const handleSubmit = async (event: any) => {
+    try{
 
-  const handleSubmit = (event:any) => {
+    
     event.preventDefault();
 
     const user = {
@@ -33,9 +32,11 @@ const Register = () => {
       confirmPassword: confirmPassword as string,
     };
 
-    dispatch(registerUser(user));
+    await dispatch(registerUser(user));
+  }catch(err) {
+    console.log(err);
+  }
   };
-
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,7 +52,8 @@ const Register = () => {
           type="text"
           onChange={(e) => setFirstName(e.target.value)}
           value={firstname as string}
-        /><label>LastName</label>
+        />
+        <label>LastName</label>
         <Input
           type="text"
           onChange={(e) => setLastName(e.target.value)}
