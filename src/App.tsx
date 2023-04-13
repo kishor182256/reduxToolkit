@@ -8,7 +8,7 @@ import Welcome from './pages/Welcome';
 
 
 const App: React.FC = () => (
-  <>
+  <div style={{display: 'flex',flexDirection:'column',minHeight:'100vh',justifyContent: 'space-between'}}>
   <Router>
   <Header/>
     <Routes>
@@ -19,7 +19,7 @@ const App: React.FC = () => (
     </Routes>
   </Router>
   <Footer/>
-  </>
+  </div>
 );
 
 export default App;

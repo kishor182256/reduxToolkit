@@ -21,14 +21,11 @@ const Welcome: React.FC = () => {
     },[token])
 
   return (
-    <div className="welcome-page">
-      <h1 className="welcome-page__title">Welcome to my app!</h1>
-      <p className="welcome-page__subtitle">
+    <div style={{display: 'flex', flexDirection: 'column',alignItems: 'center'}}>
+      <h1 >Welcome to my app!</h1>
+      <p>
         This is a beautiful welcome page for your app.
       </p>
-      <Link to="/" className="welcome-page__button">
-        Get Started
-      </Link>
     </div>
   );
 };

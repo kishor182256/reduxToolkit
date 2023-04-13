@@ -11,7 +11,8 @@ const Input: React.FC<InputProps> = ({  value, onChange,type }) => {
   
   return (
     <div>
-      <input value={value} type={type} onChange={onChange}  />
+      <input value={value} type={type} onChange={onChange}       style={{marginTop:'20px'}}
+  />
     </div>
   );
 };

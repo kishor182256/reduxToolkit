@@ -6,11 +6,12 @@ type ButtonProps = {
   variant?: 'primary' | 'secondary';
 };
 
-const Button = ({ onClick, children, variant  }: ButtonProps) => {
+const Button = ({ onClick, children  }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className={`btn ${variant === 'primary' ? 'btn-primary' : 'btn-secondary'}`}
+      style={{marginTop:'20px',width:'20%'}}
+      className="btn btn-primary btn-lg"
     >
       {children}
     </button>

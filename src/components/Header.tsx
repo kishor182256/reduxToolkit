@@ -26,13 +26,13 @@ const Header = () => {
          {!token && <li style={{ margin: '0 1rem' }}>
             <Link to='/register'>Register</Link>
           </li>}
-          <li style={{ margin: '0 1rem' }}>
+          {!token &&<li style={{ margin: '0 1rem' }}>
             <Link to='/'>Login</Link>
-          </li>
+          </li>}
 
-          <li style={{ margin: '0 1rem',cursor:'pointer' }} onClick={handleLogout}>
+          {token && <li style={{ margin: '0 1rem',cursor:'pointer' }} onClick={handleLogout}>
             LogOut
-          </li>
+          </li>}
           
         </ul>
       </nav>

@@ -62,14 +62,14 @@ const Login = () => {
           flexDirection: "column",
         }}
       >
-        <label>Email</label>
+        <label style={{margin:'5px'}}>Email</label>
         <Input
          
           type="email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-        <label>Password</label>
+        <label style={{marginTop:'10px'}}>Password</label>
 
         <Input
           type="password"
