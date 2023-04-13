@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+
 
   const handleLogout = ()=>{
     localStorage.removeItem('token');
@@ -21,9 +23,9 @@ const Header = () => {
       >
      
         <ul style={{ display: 'flex', listStyle: 'none' }}>
-          <li style={{ margin: '0 1rem' }}>
+         {!token && <li style={{ margin: '0 1rem' }}>
             <Link to='/register'>Register</Link>
-          </li>
+          </li>}
           <li style={{ margin: '0 1rem' }}>
             <Link to='/'>Login</Link>
           </li>
