@@ -3,12 +3,13 @@ import React from 'react';
 type ButtonProps = {
   onClick?: () => any;
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  disabled?: boolean
 };
 
-const Button = ({ onClick, children  }: ButtonProps) => {
+const Button = ({ onClick, children,disabled }: ButtonProps) => {
   return (
     <button
+      disabled
       onClick={onClick}
       style={{marginTop:'20px',width:'20%'}}
       className="btn btn-primary btn-lg"

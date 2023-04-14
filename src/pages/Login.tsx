@@ -63,7 +63,7 @@ const Login = () => {
           onChange={(e) => setPasswords(e.target.value)}
           value={password}
         />
-        <Button>Login</Button>
+        <Button disabled={!password && !email}>Login</Button>
       </div>
     </form>
   );
