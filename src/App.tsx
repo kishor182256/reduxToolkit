@@ -5,9 +5,15 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Welcome from './pages/Welcome';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 
 const App: React.FC = () => (
+  <>
+  <ToastContainer />
+
   <div style={{display: 'flex',flexDirection:'column',minHeight:'100vh',justifyContent: 'space-between'}}>
   <Router>
   <Header/>
@@ -20,6 +26,7 @@ const App: React.FC = () => (
   </Router>
   <Footer/>
   </div>
+  </>
 );
 
 export default App;

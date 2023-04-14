@@ -3,14 +3,10 @@ import Input from "../components/shared/Input";
 import Button from "../components/shared/button";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/userActions";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Resolver, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
-type FormValues = {
-  email: string;
-  password: string;
-};
+
 
 const Login = () => {
   const [password, setPasswords] = useState<any>("pistol");
@@ -23,10 +19,6 @@ const Login = () => {
   console.log("token", token);
 
   const handleSubmit = async (event: any) => {
-
-    try{
-
-    
     event.preventDefault();
 
     const user = {
@@ -34,14 +26,19 @@ const Login = () => {
       password: password as string,
     };
 
-    await dispatch(login(user));
-    if (token) {
-      navigate("/welcome");
-      localStorage.setItem("token", JSON.stringify(token));
-    }
-  }catch(err){
-    console.error(err);
-  }
+    await dispatch(login(user))
+      .then((response: any) => {
+        if (response.payload.token) {
+          navigate("/welcome");
+          localStorage.setItem("token", JSON.stringify(token));
+        }else{
+          toast.error('Please enter a valid credentials');
+        }
+      })
+      .catch((err: any) => {
+        console.log("---->", err);
+        toast.error(err);
+      });
   };
 
   return (

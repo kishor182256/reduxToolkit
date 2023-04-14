@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import Input from "../components/shared/Input";
 import Button from "../components/shared/button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { registerUser } from "../redux/userActions";
-import { User } from "../redux/userTypes";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [password, setPasswords] = useState<string>("pistol");
@@ -15,13 +15,9 @@ const Register = () => {
   const [email, setEmail] = useState<string>("eve.holt@reqres.in");
 
   const dispatch = useDispatch<any>();
-  const error = useSelector((state: any) => state);
-  console.log("error", error);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: any) => {
-    try{
-
-    
     event.preventDefault();
 
     const user = {
@@ -32,10 +28,20 @@ const Register = () => {
       confirmPassword: confirmPassword as string,
     };
 
-    await dispatch(registerUser(user));
-  }catch(err) {
-    console.log(err);
-  }
+    if (password === confirmPassword) {
+      await dispatch(registerUser(user))
+        .then((response: any) => {
+          if (response.payload.token) navigate("/");
+          else {
+            toast.error("Please enter correct email and password");
+          }
+        })
+        .catch((err: any) => {
+          console.log(err);
+        });
+    } else {
+      toast.error("Please enter correct  password and confirm password");
+    }
   };
 
   return (
