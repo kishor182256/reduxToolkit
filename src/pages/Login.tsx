@@ -25,7 +25,7 @@ const Login = () => {
       email: email as string,
       password: password as string,
     };
-
+    if(email && password)
     await dispatch(login(user))
       .then((response: any) => {
         if (response.payload.token) {
